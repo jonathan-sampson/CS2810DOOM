@@ -27,6 +27,8 @@
 static const char
 rcsid[] = "$Id: p_user.c,v 1.3 1997/01/28 22:08:29 b1 Exp $";
 
+// default value 2048
+int modded_speed = 4096;
 
 #include "doomdef.h"
 #include "d_event.h"
@@ -145,7 +147,7 @@ void P_CalcHeight (player_t* player)
 //
 // P_MovePlayer
 //
-void P_MovePlayer (player_t* player)
+void P_MovePlayer (player_t* player, int modded_speed)
 {
     ticcmd_t*		cmd;
 	
@@ -157,11 +159,13 @@ void P_MovePlayer (player_t* player)
     //  if not onground.
     onground = (player->mo->z <= player->mo->floorz);
 	
+	// player speed, 
+
     if (cmd->forwardmove && onground)
-	P_Thrust (player, player->mo->angle, cmd->forwardmove*2048);
+	P_Thrust (player, player->mo->angle, cmd->forwardmove*modded_speed);
     
     if (cmd->sidemove && onground)
-	P_Thrust (player, player->mo->angle-ANG90, cmd->sidemove*2048);
+	P_Thrust (player, player->mo->angle-ANG90, cmd->sidemove*modded_speed);
 
     if ( (cmd->forwardmove || cmd->sidemove) 
 	 && player->mo->state == &states[S_PLAY] )
@@ -267,7 +271,7 @@ void P_PlayerThink (player_t* player)
     if (player->mo->reactiontime)
 	player->mo->reactiontime--;
     else
-	P_MovePlayer (player);
+	P_MovePlayer (player, modded_speed);
     
     P_CalcHeight (player);
 
