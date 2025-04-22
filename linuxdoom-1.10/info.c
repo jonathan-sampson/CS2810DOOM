@@ -138,31 +138,31 @@ state_t	states[NUMSTATES] = {
     {SPR_PUNG,0,1,{A_WeaponReady},S_PUNCH,0,0},	// S_PUNCH
     {SPR_PUNG,0,1,{A_Lower},S_PUNCHDOWN,0,0},	// S_PUNCHDOWN
     {SPR_PUNG,0,1,{A_Raise},S_PUNCHUP,0,0},	// S_PUNCHUP
-    {SPR_PUNG,1,4,{NULL},S_PUNCH2,0,0},		// S_PUNCH1
-    {SPR_PUNG,2,4,{A_Punch},S_PUNCH3,0,0},	// S_PUNCH2
-    {SPR_PUNG,3,5,{NULL},S_PUNCH4,0,0},		// S_PUNCH3
-    {SPR_PUNG,2,4,{NULL},S_PUNCH5,0,0},		// S_PUNCH4
-    {SPR_PUNG,1,5,{A_ReFire},S_PUNCH,0,0},	// S_PUNCH5
-    {SPR_PISG,0,1,{A_WeaponReady},S_PISTOL,0,0},// S_PISTOL
+    {SPR_PUNG,1,1,{NULL},S_PUNCH2,0,0},		// S_PUNCH1 -- MODIFIED: Reduced from 4 to 1 to increase fire rate
+    {SPR_PUNG,2,1,{A_Punch},S_PUNCH3,0,0},	// S_PUNCH2 -- MODIFIED: Reduced from 4 to 1 to increase fire rate
+    {SPR_PUNG,3,1,{NULL},S_PUNCH4,0,0},		// S_PUNCH3 -- MODIFIED: Reduced from 5 to 1 to increase fire rate
+    {SPR_PUNG,2,1,{NULL},S_PUNCH5,0,0},		// S_PUNCH4 -- MODIFIED: Reduced from 4 to 1 to increase fire rate
+    {SPR_PUNG,1,1,{A_ReFire},S_PUNCH,0,0},	// S_PUNCH5 -- MODIFIED: Reduced from 5 to 1 to increase fire rate
+    {SPR_PISG,0,1,{A_WeaponReady},S_PISTOL,0,0},// S_PISTOL 
     {SPR_PISG,0,1,{A_Lower},S_PISTOLDOWN,0,0},	// S_PISTOLDOWN
     {SPR_PISG,0,1,{A_Raise},S_PISTOLUP,0,0},	// S_PISTOLUP
-    {SPR_PISG,0,4,{NULL},S_PISTOL2,0,0},	// S_PISTOL1
-    {SPR_PISG,1,6,{A_FirePistol},S_PISTOL3,0,0},// S_PISTOL2
-    {SPR_PISG,2,4,{NULL},S_PISTOL4,0,0},	// S_PISTOL3
-    {SPR_PISG,1,5,{A_ReFire},S_PISTOL,0,0},	// S_PISTOL4
+    {SPR_PISG,0,1,{NULL},S_PISTOL2,0,0},	// S_PISTOL1 -- MODIFIED: Reduced from 4 to 1 to increase fire rate
+    {SPR_PISG,1,1,{A_FirePistol},S_PISTOL3,0,0},// S_PISTOL2 -- MODIFIED: Reduced from 6 to 1 to increase fire rate
+    {SPR_PISG,2,1,{NULL},S_PISTOL4,0,0},	// S_PISTOL3 -- MODIFIED: Reduced from 4 to 1 to increase fire rate
+    {SPR_PISG,1,1,{A_ReFire},S_PISTOL,0,0},	// S_PISTOL4 -- MODIFIED: Reduced from 5 to 1 to increase fire rate
     {SPR_PISF,32768,7,{A_Light1},S_LIGHTDONE,0,0},	// S_PISTOLFLASH
     {SPR_SHTG,0,1,{A_WeaponReady},S_SGUN,0,0},	// S_SGUN
     {SPR_SHTG,0,1,{A_Lower},S_SGUNDOWN,0,0},	// S_SGUNDOWN
     {SPR_SHTG,0,1,{A_Raise},S_SGUNUP,0,0},	// S_SGUNUP
-    {SPR_SHTG,0,3,{NULL},S_SGUN2,0,0},	// S_SGUN1
-    {SPR_SHTG,0,7,{A_FireShotgun},S_SGUN3,0,0},	// S_SGUN2
-    {SPR_SHTG,1,5,{NULL},S_SGUN4,0,0},	// S_SGUN3
-    {SPR_SHTG,2,5,{NULL},S_SGUN5,0,0},	// S_SGUN4
-    {SPR_SHTG,3,4,{NULL},S_SGUN6,0,0},	// S_SGUN5
-    {SPR_SHTG,2,5,{NULL},S_SGUN7,0,0},	// S_SGUN6
-    {SPR_SHTG,1,5,{NULL},S_SGUN8,0,0},	// S_SGUN7
-    {SPR_SHTG,0,3,{NULL},S_SGUN9,0,0},	// S_SGUN8
-    {SPR_SHTG,0,7,{A_ReFire},S_SGUN,0,0},	// S_SGUN9
+    {SPR_SHTG,0,1,{NULL},S_SGUN2,0,0},	// S_SGUN1 -- MODIFIED: Reduced from 3 to 1 to increase fire rate
+    {SPR_SHTG,0,1,{A_FireShotgun},S_SGUN3,0,0},	// S_SGUN2 -- MODIFIED: Reduced from 7 to 1 to increase fire rate
+    {SPR_SHTG,1,1,{NULL},S_SGUN4,0,0},	// S_SGUN3 -- MODIFIED: Reduced from 5 to 1 to increase fire rate
+    {SPR_SHTG,2,1,{NULL},S_SGUN5,0,0},	// S_SGUN4 -- MODIFIED: Reduced from 5 to 1 to increase fire rate
+    {SPR_SHTG,3,1,{NULL},S_SGUN6,0,0},	// S_SGUN5 -- MODIFIED: Reduced from 4 to 1 to increase fire rate
+    {SPR_SHTG,2,1,{NULL},S_SGUN7,0,0},	// S_SGUN6 -- MODIFIED: Reduced from 5 to 1 to increase fire rate
+    {SPR_SHTG,1,1,{NULL},S_SGUN8,0,0},	// S_SGUN7 -- MODIFIED: Reduced from 5 to 1 to increase fire rate
+    {SPR_SHTG,0,1,{NULL},S_SGUN9,0,0},	// S_SGUN8 -- MODIFIED: Reduced from 3 to 1 to increase fire rate
+    {SPR_SHTG,0,1,{A_ReFire},S_SGUN,0,0},	// S_SGUN9 -- MODIFIED: Reduced from 7 to 1 to increase fire rate
     {SPR_SHTF,32768,4,{A_Light1},S_SGUNFLASH2,0,0},	// S_SGUNFLASH1
     {SPR_SHTF,32769,3,{A_Light2},S_LIGHTDONE,0,0},	// S_SGUNFLASH2
     {SPR_SHT2,0,1,{A_WeaponReady},S_DSGUN,0,0},	// S_DSGUN
