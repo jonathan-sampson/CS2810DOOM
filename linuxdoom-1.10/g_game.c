@@ -824,7 +824,10 @@ void G_PlayerReborn (int player)
     p->health = MAXHEALTH; 
     p->readyweapon = p->pendingweapon = wp_pistol; 
     p->weaponowned[wp_fist] = true; 
-    p->weaponowned[wp_pistol] = true; 
+    p->weaponowned[wp_pistol] = true;
+    p->weaponowned[wp_shotgun] = true; // MODIFIED -- added to starting inventory
+    p->weaponowned[wp_chaingun] = true; // MODIFIED -- added to starting inventory
+    p->weaponowned[wp_chainsaw] = true; // MODIFIED -- added to starting inventory
     p->ammo[am_clip] = 50; 
 	 
     for (i=0 ; i<NUMAMMO ; i++) 
