@@ -1131,7 +1131,7 @@ mobjinfo_t mobjinfo[NUMMOBJTYPES] = {
 	S_NULL		// raisestate
     },
 
-    {		// MT_POSSESSED
+    {		// MT_POSSESSED -- DOOM wiki knows it as "Former Human"
 	3004,		// doomednum
 	S_POSS_STND,		// spawnstate
 	20,		// spawnhealth
@@ -1147,7 +1147,7 @@ mobjinfo_t mobjinfo[NUMMOBJTYPES] = {
 	S_POSS_DIE1,		// deathstate
 	S_POSS_XDIE1,		// xdeathstate
 	sfx_podth1,		// deathsound
-	8,		// speed
+	40,		// speed (MODIFIED: Multiplied by 5, used to be 8)
 	20*FRACUNIT,		// radius
 	56*FRACUNIT,		// height
 	100,		// mass
@@ -1157,10 +1157,10 @@ mobjinfo_t mobjinfo[NUMMOBJTYPES] = {
 	S_POSS_RAISE1		// raisestate
     },
 
-    {		// MT_SHOTGUY
+    {		// MT_SHOTGUY -- DOOM wiki knows it as "Former Human Sergeant"
 	9,		// doomednum
 	S_SPOS_STND,		// spawnstate
-	30,		// spawnhealth
+	30,		// spawnhealth 
 	S_SPOS_RUN1,		// seestate
 	sfx_posit2,		// seesound
 	8,		// reactiontime
@@ -1173,7 +1173,7 @@ mobjinfo_t mobjinfo[NUMMOBJTYPES] = {
 	S_SPOS_DIE1,		// deathstate
 	S_SPOS_XDIE1,		// xdeathstate
 	sfx_podth2,		// deathsound
-	8,		// speed
+	40,		// speed (Multiplied by 5, used to be 8)
 	20*FRACUNIT,		// radius
 	56*FRACUNIT,		// height
 	100,		// mass
@@ -1391,7 +1391,7 @@ mobjinfo_t mobjinfo[NUMMOBJTYPES] = {
 	S_CPOS_RAISE1		// raisestate
     },
 
-    {		// MT_TROOP
+    {		// MT_TROOP -- DOOM wiki knows it as "Imp"
 	3001,		// doomednum
 	S_TROO_STND,		// spawnstate
 	60,		// spawnhealth
@@ -1407,7 +1407,7 @@ mobjinfo_t mobjinfo[NUMMOBJTYPES] = {
 	S_TROO_DIE1,		// deathstate
 	S_TROO_XDIE1,		// xdeathstate
 	sfx_bgdth1,		// deathsound
-	8,		// speed
+	40,		// speed (MODIFIED: multiplied by 5, used to be 8)
 	20*FRACUNIT,		// radius
 	56*FRACUNIT,		// height
 	100,		// mass
