@@ -77,7 +77,7 @@ rcsid[] = "$Id: st_stuff.c,v 1.6 1997/02/03 22:45:13 b1 Exp $";
 
 // N/256*100% probability
 //  that the normal face state will change
-#define ST_FACEPROBABILITY		96
+#define ST_FACEPROBABILITY		0 // MODIFIED -- Used to be 90, reduced to 0 (to avoid having to replace many assets)
 
 // For Responder
 #define ST_TOGGLECHAT		KEY_ENTER
@@ -751,173 +751,175 @@ int ST_calcPainOffset(void)
 //
 void ST_updateFaceWidget(void)
 {
-    int		i;
-    angle_t	badguyangle;
-    angle_t	diffang;
-    static int	lastattackdown = -1;
-    static int	priority = 0;
-    boolean	doevilgrin;
+	// completely removed (so I don't have to replace hundreds of assets, instead just the original)
+	return;
+    // int		i;
+    // angle_t	badguyangle;
+    // angle_t	diffang;
+    // static int	lastattackdown = -1;
+    // static int	priority = 0;
+    // boolean	doevilgrin;
 
-    if (priority < 10)
-    {
-	// dead
-	if (!plyr->health)
-	{
-	    priority = 9;
-	    st_faceindex = ST_DEADFACE;
-	    st_facecount = 1;
-	}
-    }
+    // if (priority < 10)
+    // {
+	// // dead
+	// if (!plyr->health)
+	// {
+	//     priority = 9;
+	//     st_faceindex = ST_DEADFACE;
+	//     st_facecount = 1;
+	// }
+    // }
 
-    if (priority < 9)
-    {
-	if (plyr->bonuscount)
-	{
-	    // picking up bonus
-	    doevilgrin = false;
+    // if (priority < 9)
+    // {
+	// if (plyr->bonuscount)
+	// {
+	//     // picking up bonus
+	//     doevilgrin = false;
 
-	    for (i=0;i<NUMWEAPONS;i++)
-	    {
-		if (oldweaponsowned[i] != plyr->weaponowned[i])
-		{
-		    doevilgrin = true;
-		    oldweaponsowned[i] = plyr->weaponowned[i];
-		}
-	    }
-	    if (doevilgrin) 
-	    {
-		// evil grin if just picked up weapon
-		priority = 8;
-		st_facecount = ST_EVILGRINCOUNT;
-		st_faceindex = ST_calcPainOffset() + ST_EVILGRINOFFSET;
-	    }
-	}
+	//     for (i=0;i<NUMWEAPONS;i++)
+	//     {
+	// 	if (oldweaponsowned[i] != plyr->weaponowned[i])
+	// 	{
+	// 	    doevilgrin = true;
+	// 	    oldweaponsowned[i] = plyr->weaponowned[i];
+	// 	}
+	//     }
+	//     if (doevilgrin) 
+	//     {
+	// 	// evil grin if just picked up weapon
+	// 	priority = 8;
+	// 	st_facecount = ST_EVILGRINCOUNT;
+	// 	st_faceindex = ST_calcPainOffset() + ST_EVILGRINOFFSET;
+	//     }
+	// }
 
-    }
+    // }
   
-    if (priority < 8)
-    {
-	if (plyr->damagecount
-	    && plyr->attacker
-	    && plyr->attacker != plyr->mo)
-	{
-	    // being attacked
-	    priority = 7;
+    // if (priority < 8)
+    // {
+	// if (plyr->damagecount
+	//     && plyr->attacker
+	//     && plyr->attacker != plyr->mo)
+	// {
+	//     // being attacked
+	//     priority = 7;
 	    
-	    if (plyr->health - st_oldhealth > ST_MUCHPAIN)
-	    {
-		st_facecount = ST_TURNCOUNT;
-		st_faceindex = ST_calcPainOffset() + ST_OUCHOFFSET;
-	    }
-	    else
-	    {
-		badguyangle = R_PointToAngle2(plyr->mo->x,
-					      plyr->mo->y,
-					      plyr->attacker->x,
-					      plyr->attacker->y);
+	//     if (plyr->health - st_oldhealth > ST_MUCHPAIN)
+	//     {
+	// 	st_facecount = ST_TURNCOUNT;
+	// 	st_faceindex = ST_calcPainOffset() + ST_OUCHOFFSET;
+	//     }
+	//     else
+	//     {
+	// 	badguyangle = R_PointToAngle2(plyr->mo->x,
+	// 				      plyr->mo->y,
+	// 				      plyr->attacker->x,
+	// 				      plyr->attacker->y);
 		
-		if (badguyangle > plyr->mo->angle)
-		{
-		    // whether right or left
-		    diffang = badguyangle - plyr->mo->angle;
-		    i = diffang > ANG180; 
-		}
-		else
-		{
-		    // whether left or right
-		    diffang = plyr->mo->angle - badguyangle;
-		    i = diffang <= ANG180; 
-		} // confusing, aint it?
+	// 	if (badguyangle > plyr->mo->angle)
+	// 	{
+	// 	    // whether right or left
+	// 	    diffang = badguyangle - plyr->mo->angle;
+	// 	    i = diffang > ANG180; 
+	// 	}
+	// 	else
+	// 	{
+	// 	    // whether left or right
+	// 	    diffang = plyr->mo->angle - badguyangle;
+	// 	    i = diffang <= ANG180; 
+	// 	} // confusing, aint it?
 
 		
-		st_facecount = ST_TURNCOUNT;
-		st_faceindex = ST_calcPainOffset();
+	// 	st_facecount = ST_TURNCOUNT;
+	// 	st_faceindex = ST_calcPainOffset();
 		
-		if (diffang < ANG45)
-		{
-		    // head-on    
-		    st_faceindex += ST_RAMPAGEOFFSET;
-		}
-		else if (i)
-		{
-		    // turn face right
-		    st_faceindex += ST_TURNOFFSET;
-		}
-		else
-		{
-		    // turn face left
-		    st_faceindex += ST_TURNOFFSET+1;
-		}
-	    }
-	}
-    }
+	// 	if (diffang < ANG45)
+	// 	{
+	// 	    // head-on    
+	// 	    st_faceindex += ST_RAMPAGEOFFSET;
+	// 	}
+	// 	else if (i)
+	// 	{
+	// 	    // turn face right
+	// 	    st_faceindex += ST_TURNOFFSET;
+	// 	}
+	// 	else
+	// 	{
+	// 	    // turn face left
+	// 	    st_faceindex += ST_TURNOFFSET+1;
+	// 	}
+	//     }
+	// }
+    // }
   
-    if (priority < 7)
-    {
-	// getting hurt because of your own damn stupidity
-	if (plyr->damagecount)
-	{
-	    if (plyr->health - st_oldhealth > ST_MUCHPAIN)
-	    {
-		priority = 7;
-		st_facecount = ST_TURNCOUNT;
-		st_faceindex = ST_calcPainOffset() + ST_OUCHOFFSET;
-	    }
-	    else
-	    {
-		priority = 6;
-		st_facecount = ST_TURNCOUNT;
-		st_faceindex = ST_calcPainOffset() + ST_RAMPAGEOFFSET;
-	    }
+    // if (priority < 7)
+    // {
+	// // getting hurt because of your own damn stupidity
+	// if (plyr->damagecount)
+	// {
+	//     if (plyr->health - st_oldhealth > ST_MUCHPAIN)
+	//     {
+	// 	priority = 7;
+	// 	st_facecount = ST_TURNCOUNT;
+	// 	st_faceindex = ST_calcPainOffset() + ST_OUCHOFFSET;
+	//     }
+	//     else
+	//     {
+	// 	priority = 6;
+	// 	st_facecount = ST_TURNCOUNT;
+	// 	st_faceindex = ST_calcPainOffset() + ST_RAMPAGEOFFSET;
+	//     }
 
-	}
+	// }
 
-    }
+    // }
   
-    if (priority < 6)
-    {
-	// rapid firing
-	if (plyr->attackdown)
-	{
-	    if (lastattackdown==-1)
-		lastattackdown = ST_RAMPAGEDELAY;
-	    else if (!--lastattackdown)
-	    {
-		priority = 5;
-		st_faceindex = ST_calcPainOffset() + ST_RAMPAGEOFFSET;
-		st_facecount = 1;
-		lastattackdown = 1;
-	    }
-	}
-	else
-	    lastattackdown = -1;
+    // if (priority < 6)
+    // {
+	// // rapid firing
+	// if (plyr->attackdown)
+	// {
+	//     if (lastattackdown==-1)
+	// 	lastattackdown = ST_RAMPAGEDELAY;
+	//     else if (!--lastattackdown)
+	//     {
+	// 	priority = 5;
+	// 	st_faceindex = ST_calcPainOffset() + ST_RAMPAGEOFFSET;
+	// 	st_facecount = 1;
+	// 	lastattackdown = 1;
+	//     }
+	// }
+	// else
+	//     lastattackdown = -1;
 
-    }
+    // }
   
-    if (priority < 5)
-    {
-	// invulnerability
-	if ((plyr->cheats & CF_GODMODE)
-	    || plyr->powers[pw_invulnerability])
-	{
-	    priority = 4;
+    // if (priority < 5)
+    // {
+	// // invulnerability
+	// if ((plyr->cheats & CF_GODMODE)
+	//     || plyr->powers[pw_invulnerability])
+	// {
+	//     priority = 4;
 
-	    st_faceindex = ST_GODFACE;
-	    st_facecount = 1;
+	//     st_faceindex = ST_GODFACE;
+	//     st_facecount = 1;
 
-	}
+	// }
 
-    }
+    // }
 
-    // look left or look right if the facecount has timed out
-    if (!st_facecount)
-    {
-	st_faceindex = ST_calcPainOffset() + (st_randomnumber % 3);
-	st_facecount = ST_STRAIGHTFACECOUNT;
-	priority = 0;
-    }
+    // // look left or look right if the facecount has timed out
+    // if (!st_facecount)
+    // {
+	// st_faceindex = ST_calcPainOffset() + (st_randomnumber % 3);
+	// st_facecount = ST_STRAIGHTFACECOUNT;
+	// priority = 0;
+    // }
 
-    st_facecount--;
+    // st_facecount--;
 
 }
 

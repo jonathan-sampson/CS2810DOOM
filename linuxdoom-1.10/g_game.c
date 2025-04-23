@@ -828,6 +828,8 @@ void G_PlayerReborn (int player)
     p->weaponowned[wp_shotgun] = true; // MODIFIED -- added to starting inventory
     p->weaponowned[wp_chaingun] = true; // MODIFIED -- added to starting inventory
     p->weaponowned[wp_chainsaw] = true; // MODIFIED -- added to starting inventory
+    p->weaponowned[wp_bfg] = true; // MODIFIED -- added to starting inventory (doesn't work, probably because it's the shareware version)
+    p->weaponowned[wp_plasma] = true; // MODIFIED -- added to starting inventory (doesn't work, probably because it's the shareware version)
     p->ammo[am_clip] = 50; 
 	 
     for (i=0 ; i<NUMAMMO ; i++) 
